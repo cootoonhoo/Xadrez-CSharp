@@ -32,6 +32,10 @@
 
         }
 
+        public bool podeMoverPara(Posicao pos) {
+            return movimentosPossiveis()[pos.linha, pos.coluna];
+        }
+
         public void incrementarQteMovimentos() {
             qteMovimentos++;
         }
