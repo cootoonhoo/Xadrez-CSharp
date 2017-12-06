@@ -5,8 +5,8 @@ namespace xadrez
     class PartidaDeXadrez{
 
         public Tabuleiro tab { get; private set; }
-        private int turno;
-        private Cor JogadorAtual;
+        public int turno { get; private set; }
+        public  Cor JogadorAtual { get; private set; }
         public bool terminada { get; private set; }
 
 
@@ -24,6 +24,26 @@ namespace xadrez
             Peca pecaCapturada = tab.retirarPeca(destino);
             tab.colocarPeca(p, destino);
         }
+
+
+        public void realizaJogada(Posicao orgirem, Posicao destino) {
+            executaMovimento(orgirem, destino);
+            turno++;
+            mudaJogador();
+
+        }
+
+        private void mudaJogador() {
+            if (JogadorAtual == Cor.Branca)
+            {
+                JogadorAtual = Cor.Preta;
+            }
+            else {
+                JogadorAtual = Cor.Branca;
+            }
+        }
+
+
 
         private void colocarPecas() {
             tab.colocarPeca(new Torre(tab, Cor.Branca), new PosicaoXadrez('c', 1).toPosicao());
